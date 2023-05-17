@@ -141,6 +141,11 @@ main .container{
 }
 main .wrapper{
     font-family: var(--main-font);
+    display: flex;
+    transition: all .5s;
+}
+.wrapper > div{
+    margin-right: 55px;
 }
 
 
@@ -174,7 +179,7 @@ main .wrapper{
     position: absolute;
     width: 426px;
     height: 428px;
-    background: var(--main-color);
+    background: linear-gradient(100deg, dodgerblue, transparent);
     right: -45vw;
     z-index: -1;
     opacity: .4;
@@ -187,7 +192,7 @@ main .wrapper{
 .wrapper img{
     width: 100%;
     transform: scale(1.3);
-    margin-top: 50px;
+    margin-top: 21px;
 }
 /* start button */
 .button{
@@ -206,9 +211,74 @@ main .wrapper{
 .button button i{
     margin-left: 15px;
 }
-
-
-
+/* some changes from slide to slide */
+.second-furniture-slide img {
+    transform: scale(1.2);
+}
+.second-furniture-slide .image{
+    margin-top: 85px;
+}
+.sub-text p{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 20px;
+}
+.second-furniture-slide .button button{
+    padding: 14px 51px;
+    border-radius: 26px;
+}
+/* make some changes to third slide */
+.third-furniture-slide .image::before , .second-furniture-slide .image::before{
+    width: 0;
+}
+.third-furniture-slide img{
+    transform: scale(1);
+}
+.third-furniture-slide .text{
+    margin-top: 95px;
+    text-align: center;
+    width: 100%;
+    font-size: 34px;
+}
+.third-furniture-slide h2 {
+    font-size: 1em;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.third-furniture-slide p{
+    font-size: .5em;
+    margin-top: 26px;
+    line-height: 2;
+}
+.third-furniture-slide button{
+    margin: auto;
+    text-transform: uppercase;
+}
+.third-furniture-slide .button{
+    margin-top: 64px;
+}
+/* start bullets */
+.bullets{
+    margin-top: 30px;
+}
+.bullets ul{
+    display: flex;
+    justify-content: center;
+}
+.bullets ul li {
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--main-color);
+    border-radius: 50%;
+    margin-right: 22px;
+}
+.bullets ul li:last-of-type{
+    margin-right: 0;
+}
+.bullets .active-slide{
+    background-color: var(--main-color);
+}
 /* hide body for desktop and laptop screens */
 @media (min-width:481px) {
     body{
