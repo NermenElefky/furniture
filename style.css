@@ -196,7 +196,7 @@ main .wrapper{
 }
 /* start button */
 .button{
-    margin-top: 40px;
+    margin-top: 22px;
 }
 .button button{
     padding: 10px 15px;
@@ -213,7 +213,8 @@ main .wrapper{
 }
 /* some changes from slide to slide */
 .second-furniture-slide img {
-    transform: scale(1.2);
+    transform: scale(1.1);
+    margin-left: -30px;
 }
 .second-furniture-slide .image{
     margin-top: 85px;
@@ -229,6 +230,9 @@ main .wrapper{
     border-radius: 26px;
 }
 /* make some changes to third slide */
+.third-furniture-slide{
+    margin-left: -32px;
+}
 .third-furniture-slide .image::before , .second-furniture-slide .image::before{
     width: 0;
 }
