@@ -26,58 +26,73 @@ const wrapper = document.querySelector(".wrapper")
 let sliderWidth = document.querySelector(".firt-furniture-slide").clientWidth // this width will be changlable when making it responsive
 let bullets = document.querySelector(".bullets")
 let sliderNumber = 3
-let i = 3;
-
-// make slider work auto
-const sliderShow = function(){
-    let translatedValue = (sliderNumber - i)*(sliderWidth + 55)
-    wrapper.style.transform = `translateX(-${translatedValue}px)`
-    // remove the active class
+let i = 1;
+let n =1;
+const add_active_class = function (){
+    // now add the active class to the active slide
     bullets.querySelector(".active-slide").classList.remove("active-slide")
-    // now add it 
     bullets.querySelector(`[data-slide-number = "${i}"]`).classList.add("active-slide")
-    i > 1 ? i-- : i=3 // to make the slider return to the first slide again
-    setTimeout(sliderShow , 7000)
+}
+
+const sliderShow = function (){
+        let translatedValue = (n-1)*(sliderWidth + 55)
+        wrapper.style.transform = `translateX(-${translatedValue}px)`
+        i= n
+        n == sliderNumber ? n =1 : n++
+        add_active_class()
+        setTimeout(sliderShow , 7000)
 }
 sliderShow();
-
 // make slide go to next or prev slide
 
-let prev_x , active_slider_number , isDrag = false;
+let prev_x , active_slider_number , isDrag = false , to_next = false , to_prev = false;
 const strat_drag = function(e){
      isDrag = true // just to control mosuemove only work when start dragging
      prev_x = e.pageX || e.touches[0].pageX
-     active_slider_number = bullets.querySelector(".active-slide").getAttribute("data-slide-number")
-}
+    }
 
 const prev_next_slide = function(e){
         if (!isDrag) {return}
         let current_x = e.pageX || e.touches[0].pageX
         // check if the user wants the next or prev slider
         if (prev_x > current_x){
-
-            if (active_slider_number == 1){
-                wrapper.style.transform = `translateX(0px)`
-            }
-            else{
-                let translatedValue = (active_slider_number)*(sliderWidth + 55)
-            wrapper.style.transform = `translateX(-${translatedValue}px)`
-            }
+                to_next = true;
+                
         }
         else{
-            if (active_slider_number  == sliderNumber){
-                let translatedValue = (active_slider_number-1)*(sliderWidth + 55)
-                wrapper.style.transform = `translateX(-${translatedValue}px)`
-            }
-            else{
-                let translatedValue = (active_slider_number-(sliderNumber-2))*(sliderWidth + 55)
-                wrapper.style.transform = `translateX(-${translatedValue}px)`
-            }
+            to_prev = true
+            
         }
-} 
+    }      
 
 const stop_drag = function (){
-    isDrag = false;
+    if (to_next){
+            if (i == sliderNumber){
+                wrapper.style.transform +=0
+            }
+            else{
+                // to the next
+            let translatedValue = (sliderWidth + 55)
+            wrapper.style.transform += `translateX(-${translatedValue}px)`
+            i++;
+            add_active_class()
+        }
+    }
+    if (to_prev){
+        if (i == 1){
+            wrapper.style.transform = `translateX(0px)`
+        }
+        else{
+            let translatedValue = (sliderWidth + 55)
+            wrapper.style.transform += `translateX(${translatedValue}px)`
+            i--
+            add_active_class()
+        }
+    }
+    to_next = false
+    isDrag = false
+    to_prev = false
+    console.log("now i is "+i)
 }
 wrapper.addEventListener("mousedown",strat_drag)
 wrapper.addEventListener("touchstart",strat_drag)
