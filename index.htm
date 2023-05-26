@@ -38,55 +38,66 @@
     </header>
     <!-- start main part of landing -->
     <main>
-        <div class="container">
-            <div class="wrapper">
-                <div class="firt-furniture-slide">
-                    <div class="text">
-                        <h1>Furniture in your style</h1>
-                    </div>
-                    <div class="image">
-                            <div class="for-reaseon">
-                                <img src="./images/your furniture (5).png" alt="">
+        <div class="skew_shaped"></div>
+        <div class="wrapper">
+            <!-- first slider -->
+            <div class="firt_furn_slide active" data-slider-number = "01">
+                <div class="text">
+                    <h1>Giving home new look</h1>
+                </div>
+                <div class="image">
+                    <img src="./images/furniture_img (1).png" alt="">
+                    <div class="furniture_info">
+                        <img src="./images/furniture_img (1).png" alt="">
+                        <div class="smalltext">
+                            <p class="furn-name">Elementum Chair</p>
+                            <div class="details">
+                                <span><i class="fa-solid fa-star"></i> 4.5</span>
+                                <span><i class="fa-solid fa-dollar-sign"></i> 240.00</span>
                             </div>
-                    </div>
-                    <div class="button">
-                        <button>Discover <i class="fa-solid fa-arrow-right"></i></button>
-                    </div>
-                </div>
-                <div class="second-furniture-slide">
-                    <div class="text">
-                        <h1>We make living better</h1>
-                    </div>
-                    <div class="image">
-                        <img src="./images/furn7.png" alt="">
-                    </div>
-                    <div class="sub-text">
-                        <p>Style your home your way</p>
-                    </div>
-                    <div class="button">
-                        <button>Shop now<i class="fa-solid fa-arrow-right"></i></button>
-                    </div>
-                </div>
-                <div class="third-furniture-slide">
-                    <div class="image">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT08nepp3oXK4i2bL9ZPhosXMOPiLBnz35Wqk5mIWuReZj0M237-7Zbz1kx5lvzh-p1jOk&usqp=CAU" alt="">
-                    </div>
-                    <div class="text">
-                        <h2>Sit in luxury</h2>
-                        <p>Enchance your life with fine furniture. Take your furniture to the next step.</p>
-                    </div>
-                    <div class="button">
-                        <button>Get the look</button>
+                        </div>
+                        <button class="goahead"><i class="fa-solid fa-arrow-right-long"></i></button>
+                        
                     </div>
                 </div>
             </div>
-            <div class="bullets">
-                <ul>
-                    <li class="active-slide" data-slide-number = "1"></li>
-                    <li data-slide-number="2"></li>
-                    <li data-slide-number="3"></li>
-                </ul>
+            <!-- second slider -->
+            <div class="second_furn_slide" data-slider-number="02">
+                <div class="text">
+                    <h1>Furniture that tells a stroy</h1>
+                    <p>Choose your furniture as your style and build your story.</p>
+                    <button class="explore">Explore</button>
+                </div>
+                <div class="image">
+                    <img src="./images/furn-img (1).png" alt="furniture image" class="second-slider-main-image">
+                    <div class="furn-colors">
+                            <div style="--div-color:#781a0080" class="color"><img src="./images/furn-img (1).png" alt=""></div>
+                            <div style="--div-color:#fc5b168d" class="color"><img src="./images/furn-img (13).png" alt=""></div>
+                            <div style="--div-color:#2c26268d" class="color"><img src="./images/furn-img (14).png" alt=""></div>
+                            <div style="--div-color:#192f648a" class="color"><img src="./images/furn-img (15).png" alt=""></div>
+                    </div>
+                </div>
             </div>
+            <!-- third slider -->
+            <div class="third_furn_slide" data-slider-number="03">
+                <div class="text">
+                    <h1>Sit like Kings and Queens</h1>
+                    <p>Pick your furniture from a new and large collections of modern furniture. <br> Give your home modern look and be the king</p>
+                    <button>Get a look </button>
+                </div>
+                <div class="image">
+                    <img src="./images/furn-img (3).png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="btns">
+            <button class="prev">Prev<span></span></button>
+            <button class="next"><span></span> Next</button>
+        </div>
+        <div class="slidersNumber">
+            <span class="slidernumber">01</span>
+            <span class="dash">/</span>
+            <span class="slidertotalnumber">03</span>
         </div>
     </main>
     <!-- js file -->
