@@ -18,11 +18,17 @@ input{
     border: none;
     outline: none;
 }
+button{
+    border: 0;
+    cursor: pointer;
+}
 /* global vars */
 :root{
     --main-font:'Open Sans', sans-serif;
-    --main-color:dodgerblue;
+    --main-color:#F7D1C4;
+    /* --main-color:#7C1C00; */
     --main2-font:'Montserrat', sans-serif;
+    --bg-color:#f2f1f1;
 }
 .container{
     width: 80vw;
@@ -36,10 +42,17 @@ input{
     }
 }
 /* start header */
+header{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 4; /*its 4 because we give the div in wrapper z-index 3 */
+}
 header .container{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 25px 0px 15px;
 }
 header .logo a {
     font-family: var(--main-font);
@@ -48,7 +61,7 @@ header .logo a {
 }
 header .logo i{
     font-size: 40px;
-    color: var(--main-color); /*#F2B6A0 / #FC4F00*/
+    color: #fff; /*#F2B6A0 / #FC4F00*/
 }
 header .nav-icons{
     font-size: 22px;
@@ -61,7 +74,7 @@ header .nav-icons > span{
     height: 31px;
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
 }
 header .nav-icons > span:not(:nth-child(1)){
     width: 31px;
@@ -132,160 +145,392 @@ header .longest{
 }
 /* strat main */
 main{
-    height: 85vh;
-}
-main .container{
     width: 100vw;
-    padding: 0vw 10vw;
-    overflow-x: hidden;
-}
-main .wrapper{
-    font-family: var(--main-font);
-    display: flex;
-    transition: all .5s;
-}
-.wrapper > div{
-    margin-right: 55px;
-}
-
-
-/* text styles */
-.wrapper .text{
-    width: 168px;/*i give a fixed width because i need to fix it*/
-}
-.wrapper h1 {
-    font-weight: 500;
+    height: 100vh;
+    background: var(--bg-color);
     position: relative;
-}
-.wrapper h1::before{
-    content: "";
-    position: absolute;
-    width: 3px;
-    height: 77%;
-    border-radius: 2px;
-    background: var(--main-color);
-    left: -10px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-/* start image style */
-.wrapper .image{
-    width: 80vw;
-    min-width: 352px;
-    position: relative;
-}
-.wrapper .image::before{
-    content: "";
-    position: absolute;
-    width: 426px;
-    height: 428px;
-    background: linear-gradient(100deg, dodgerblue, transparent);
-    right: -45vw;
-    z-index: -1;
-    opacity: .4;
-    border-radius: 50%;
-}
-.wrapper .for-reaseon{
-    width: 100%;
     overflow: hidden;
 }
-.wrapper img{
+.skew_shaped{
+    width: 50%;
+    height: 100%;
+    background: var(--main-color);
+    position: absolute;
+    left: -33px;
+    transform: skewX(5deg);
+}
+.wrapper{
+    width: 80vw;
+    height: 100%;
+    margin: auto;
+}
+.firt_furn_slide , .second_furn_slide ,.third_furn_slide{
+    display: none;
     width: 100%;
-    transform: scale(1.3);
-    margin-top: 21px;
+    height: 100%;
+    align-items: center;
+    z-index: 3;
+    position: relative;
+    justify-content: space-around;
 }
-/* start button */
-.button{
-    margin-top: 22px;
+.wrapper .active{
+    display: inline-flex;    
 }
-.button button{
-    padding: 10px 15px;
-    cursor: pointer;
+.wrapper .text h1 {
+    font-family: var(--main-font);
+    text-transform: capitalize;
+    font-weight: 500;
+    font-size: 43px;
+    text-align: center;
+    width: 300px;
+}
+.wrapper .text p{
+    font-family: var(--main-font);
     font-size: 18px;
+    margin-top: 30px;
+    font-weight: 500;
+}
+.wrapper .text button{
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 15px;
+    font-family: var(--main-font);
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 16px;
+    width: 100px;
+    cursor: pointer;
+    transition: .5s;
+}
+.wrapper .second_furn_slide .text button:hover{
+    background-color: #000;
+    color: #fff;
+}
+.wrapper .image{
+    width: 500px;
+}
+.wrapper .second_furn_slide .image{
+    width: 500px;
+}
+.wrapper .firt_furn_slide  .image , .wrapper .second_furn_slide .image{
+    transform: rotateY(180deg);
+}
+.wrapper > div .image >  img {
+    width: 100%;
+}
+.wrapper .third_furn_slide .image{
+    position: absolute;
+    left: auto;
+    right: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    filter: opacity(0.3);
+    z-index: -1;
+}
+.wrapper .third_furn_slide .text{
+    text-align: center;
+    max-width: 1000px;
+}
+.wrapper .third_furn_slide  .text h1 {
+    width: 100%;
+    margin-bottom: 40px;
+    font-size: 43px !important;
+}
+.wrapper .third_furn_slide .text button{
+    margin-top: 40px;
+    width: 239px;
+    background: linear-gradient(-89deg, var(--main-color),var(--bg-color));
+    color: #000;
+    border-radius: 30px;
+    font-size: 24px;
+    box-shadow: 0px 2px 2px rgb(0 0 0 / 30%);
+    position: relative;
+}
+.wrapper .third_furn_slide .text button::after{
+    content: "";
+    width: 0%;
+    height: 100%;
+    background-color: #fff;
+    opacity: .2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 30px;
+}
+.wrapper .third_furn_slide .text button:hover::after{
+    width: 100%;
+    transition: .5s;
+}
+/* start furniure info */
+.wrapper  > div .image .furniture_info{
     display: flex;
     align-items: center;
-    color: #fff;
-    background: var(--main-color);
-    border: 0;
+    padding: 15px 20px;
+    background-color: rgba(0, 0, 0, .2);
+    max-width: 350px;
+    border-radius: 40px;
+} 
+.wrapper .firt_furn_slide .image .furniture_info , .wrapper .second_furn_slide .image .furniture_info{
+    transform: rotateY(180deg);
 }
-.button button i{
-    margin-left: 15px;
+.furniture_info img{
+    width: 80px;   
 }
-/* some changes from slide to slide */
-.second-furniture-slide img {
-    transform: scale(1.1);
-    margin-left: -30px;
+.furniture_info .smalltext{
+        margin-left: 18px;
+        font-family: var(--main-font);
+        color: #000;
+        font-weight: 500;
 }
-.second-furniture-slide .image{
-    margin-top: 85px;
+.furniture_info .furn-name{
+    margin-bottom: 6px;
 }
-.sub-text p{
-    text-align: center;
+.furniture_info span:first-of-type{
+    margin-right: 10px;
+}
+.furniture_info span i {
+    color: #e8ec09;
+}
+.furniture_info .goahead{
+    background-color: #fff;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 30px;
+    position: relative;
+}
+.furniture_info .goahead i {
+    color: #000;
     font-size: 20px;
-    font-weight: 500;
-    margin-top: 20px;
+    z-index: 3;
 }
-.second-furniture-slide .button button{
-    padding: 14px 51px;
-    border-radius: 26px;
+.furniture_info .goahead::after{
+    content: "";
+    width: 0%;
+    height: 100%;
+    background-color: var(--main-color);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 100%;
 }
-/* make some changes to third slide */
-.third-furniture-slide{
-    margin-left: -32px;
+.furniture_info .goahead:hover::after{
+    width:100%;
+    transition: .5s;
 }
-.third-furniture-slide .image::before , .second-furniture-slide .image::before{
-    width: 0;
+.furniture_info .goahead:hover i{
+    color: #fff;
 }
-.third-furniture-slide img{
-    transform: scale(1);
+/* furniture colors */
+.wrapper  > div .image .furn-colors{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 27%;
+    right: 100%;
 }
-.third-furniture-slide .text{
-    margin-top: 95px;
-    text-align: center;
-    width: 100%;
-    font-size: 34px;
-}
-.third-furniture-slide h2 {
-    font-size: 1em;
-    font-weight: 500;
-    text-transform: uppercase;
-}
-.third-furniture-slide p{
-    font-size: .5em;
-    margin-top: 26px;
-    line-height: 2;
-}
-.third-furniture-slide button{
-    margin: auto;
-    text-transform: uppercase;
-}
-.third-furniture-slide .button{
-    margin-top: 64px;
-}
-/* start bullets */
-.bullets{
-    margin-top: 30px;
-}
-.bullets ul{
+.furn-colors div {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--div-color);
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    cursor: pointer;
 }
-.bullets ul li {
-    width: 12px;
-    height: 12px;
-    border: 2px solid var(--main-color);
+.furn-colors img{
+    width: 60px;
     border-radius: 50%;
-    margin-right: 22px;
 }
-.bullets ul li:last-of-type{
-    margin-right: 0;
+
+/* for next and previous buttons */
+main .btns{
+    position: absolute;
+    bottom: 30px;
+    left: 40px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 3;
 }
-.bullets .active-slide{
-    background-color: var(--main-color);
+main .btns button{
+    border: none;
+    background-color: transparent;
+    color: #000;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
 }
-/* hide body for desktop and laptop screens */
-@media (min-width:481px) {
-    body{
-        display: none;
+main .btns .prev{
+    margin-right: 6px;
+}
+main .btns span {
+    display: inline-block;
+    background-color: #000;
+    width: 100px;
+    height: 1px;
+    border-radius: 5px;
+    position: relative;
+}
+main .btns span:first-of-type{
+    margin-left: 7px;
+}
+main .btns span:last-of-type{
+    margin-right: 7px;
+}
+main .btns span::after{
+    content: "";
+    width: 0%;
+    height: 100%;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    transition: .5s;
+}
+main .btns .prev span::after{
+    left: 0;
+}
+main .btns .next span::after{
+    right: 0;
+}
+main .btns button:hover span::after{
+    width: 100%;
+}
+main .slidersNumber{
+    position: absolute;
+    bottom: 10%;
+    left: 40%;
+    font-family: var(--main-font);
+    font-weight: 500;
+}
+main .slidersNumber .slidernumber , main .slidersNumber .dash{
+    font-size: 40px;
+}
+main .slidersNumber .slidertotalnumber{
+    font-size: 20px;
+}
+@media (max-width:1160px) {
+    .firt_furn_slide{
+        justify-content: space-between;
+    }
+    .wrapper .second_furn_slide .image .furniture_info{
+        width: 317px;
+    }
+}
+@media (max-width:850px) {
+    .wrapper{
+        width: 90vw;
+    }
+    .wrapper > div .image .furn-colors{
+        top: 100%;
+        right:7%;
+        flex-direction: row;
+    }
+    .furn-colors div{
+        width: 70px;
+        height: 70px;
+        margin-right: 15px;
+    }
+    .furn-colors img{
+        width: 50px;
+    }
+
+}
+@media (max-width:740px) {
+    .wrapper .text h1{
+        font-size: 34px;
+        width: 238px;
+    }
+    .wrapper .text p{
+        font-size: 16px;
+    }
+    .wrapper > div .image .furn-colors{
+        right: -10%;
+    }
+}
+@media (max-width:615px) {
+    .firt_furn_slide , .second_furn_slide{
+        flex-direction: column;
+        justify-content: center;
+    }
+    .wrapper > div .image .furniture_info{
+        position: absolute;
+        bottom: -29px;
+    }
+    main .slidersNumber{
+        bottom: 5%;
+        left: 80%;
+    }
+    .wrapper .second_furn_slide .image{
+        width: 400px;
+    }
+    .wrapper > div .image .furn-colors{
+        flex-direction: column;
+        top: 11%;
+        right: 96%;
+    }
+}
+@media(max-width:540px){
+   .skew_shaped{
+    width: 100%;
+    bottom: -51px;
+    left: 0;
+    height: 50%;
+    transform: skewY(11deg);
+   }
+   header .logo i{
+    color: var(--main-color);
+   }
+   main .btns span{
+    width: 50px;
+   }
+   .wrapper > div .image .furniture_info{
+        padding: 15px;
+        left: 21%;
+        bottom: -35px;
+   }
+   .furniture_info .smalltext{
+        margin-left: 5px;
+   }
+   .furniture_info .goahead{
+        margin-left: 15px;
+   }
+   main .slidersNumber {
+    left: 73%;
+    bottom: 3%;
+   }
+   main .btns {
+        left: 20px;
+        bottom: 20px;
+   }
+   main .slidersNumber .slidernumber, main .slidersNumber .dash{
+        font-size: 36px;
+   }
+   .furn-colors div{
+        width: 55px;
+        height: 55px;
+   }
+   .furn-colors img {
+    width: 42px;
+   }
+   .wrapper .text p {
+        margin-top: 12px;
+    }
+    .wrapper .second_furn_slide .image{
+        width: 317px;
+    }
+    .wrapper > div .image .furn-colors{
+        flex-direction: row;
+        top: 95%;
+        right: 11%;
+    }
+}
+@media (max-width:400px) {
+    .wrapper .third_furn_slide .image{
+        width: 465px;
     }
 }
