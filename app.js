@@ -21,84 +21,72 @@ searchBtn.addEventListener("click",()=>{
         searchIcon.style.color = "#fff"
     }
 })
-// let's make our slider in the landing page
+
+// make our slider auto
 const wrapper = document.querySelector(".wrapper")
-let sliderWidth = document.querySelector(".firt-furniture-slide").clientWidth // this width will be changlable when making it responsive
-let bullets = document.querySelector(".bullets")
-let sliderNumber = 3
-let i = 1;
-let n =1;
-const add_active_class = function (){
-    // now add the active class to the active slide
-    bullets.querySelector(".active-slide").classList.remove("active-slide")
-    bullets.querySelector(`[data-slide-number = "${i}"]`).classList.add("active-slide")
-}
+const sliders = Array.from(document.querySelectorAll(".wrapper > div"))
+const slider_number = document.querySelector(".slidernumber");
+const slider_change_time = 8000
+let prev_clicked = false
 
-const sliderShow = function (){
-        let translatedValue = (n-1)*(sliderWidth + 55)
-        wrapper.style.transform = `translateX(-${translatedValue}px)`
-        i= n
-        n == sliderNumber ? n =1 : n++
-        add_active_class()
-        setTimeout(sliderShow , 7000)
-}
-sliderShow();
-// make slide go to next or prev slide
+const auto_slider = ()=>{
 
-let prev_x , active_slider_number , isDrag = false , to_next = false , to_prev = false;
-const strat_drag = function(e){
-     isDrag = true // just to control mosuemove only work when start dragging
-     prev_x = e.pageX || e.touches[0].pageX
+    // find the active slider and define the next to display then remove active class from it
+    function remove_add (e){
+        if(prev_clicked) {
+            e.previousElementSibling == null ?wrapper.lastElementChild.classList.add("active") : 
+            e.previousElementSibling.classList.add("active")     
+        }
+       else{
+            e.nextElementSibling == null ?wrapper.firstElementChild.classList.add("active") :
+            e.nextElementSibling.classList.add("active")
+       }
+       e.classList.remove("active")
     }
 
-const prev_next_slide = function(e){
-        if (!isDrag) {return}
-        let current_x = e.pageX || e.touches[0].pageX
-        // check if the user wants the next or prev slider
-        if (prev_x > current_x){
-                to_next = true;
-                
-        }
-        else{
-            to_prev = true
-            
-        }
-    }      
+    // add class active to the next slide
+    remove_add(wrapper.querySelector(".active"))    
 
-const stop_drag = function (){
-    if (to_next){
-            if (i == sliderNumber){
-                wrapper.style.transform +=0
-            }
-            else{
-                // to the next
-            let translatedValue = (sliderWidth + 55)
-            wrapper.style.transform += `translateX(-${translatedValue}px)`
-            i++;
-            add_active_class()
-        }
-    }
-    if (to_prev){
-        if (i == 1){
-            wrapper.style.transform = `translateX(0px)`
-        }
-        else{
-            let translatedValue = (sliderWidth + 55)
-            wrapper.style.transform += `translateX(${translatedValue}px)`
-            i--
-            add_active_class()
-        }
-    }
-    to_next = false
-    isDrag = false
-    to_prev = false
-    console.log("now i is "+i)
+    // change the slider number
+    slider_number.innerText = wrapper.querySelector(".active").getAttribute("data-slider-number")
+
 }
-wrapper.addEventListener("mousedown",strat_drag)
-wrapper.addEventListener("touchstart",strat_drag)
 
-wrapper.addEventListener("mousemove",prev_next_slide)
-wrapper.addEventListener("touchmove",prev_next_slide)
+// call the func every 8000 ms
+let slider_interval = setInterval(auto_slider , slider_change_time)
 
-wrapper.addEventListener("mouseup",stop_drag)
-wrapper.addEventListener("touchend",stop_drag)
+// next and prev buttons
+const next = document.querySelector(".next")
+const previous = document.querySelector(".prev")
+
+// if next clicked
+next.addEventListener("click",()=>{
+    clearInterval(slider_interval) // to make the slider take the full time
+    auto_slider()
+    // we can't use setintervai directly without previous invoke of function 
+    // becuase this function needs to take 7000 to make the change and we want it immedaitly
+    slider_interval = setInterval(auto_slider , slider_change_time)
+})
+
+// if previous clicked  
+previous.addEventListener("click",()=>{
+    clearInterval(slider_interval)
+    prev_clicked = true;
+    auto_slider()
+    prev_clicked = false
+    slider_interval = setInterval(auto_slider , slider_change_time)
+})
+
+// change the main image apparence in second slider
+const main_image_second_slider = document.querySelector(".second-slider-main-image")
+
+wrapper.querySelector(".second_furn_slide").addEventListener("click",(e)=>{
+     if (e.target.closest(".color") != null ){
+            let main_img_src = e.target.tagName == "IMG" ? 
+            e.target.getAttribute("src") : 
+            e.target.firstElementChild.getAttribute("src")
+
+            // now set the main image source
+            main_image_second_slider.setAttribute("src" , main_img_src)
+     }
+})
