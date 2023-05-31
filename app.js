@@ -90,3 +90,42 @@ wrapper.querySelector(".second_furn_slide").addEventListener("click",(e)=>{
             main_image_second_slider.setAttribute("src" , main_img_src)
      }
 })
+
+// make love cation
+const love_icons = document.querySelectorAll(".love i");
+
+love_icons.forEach((icon)=>{
+    icon.addEventListener("click",()=>{
+            icon.classList.toggle("fa-solid")
+            icon.classList.toggle("fa-regular")
+
+    })
+})
+
+// make best seller section
+const slider_header = document.querySelectorAll(".products_header li")
+const slider_header_parent = document.querySelector(".products_header ul")
+const products  = document.querySelectorAll(".best-one")
+
+slider_header.forEach((header)=>{
+    header.addEventListener("click",()=>{
+        
+        // remove active class
+        slider_header_parent.querySelector(".productActive").classList.remove("productActive")
+        
+        // now add it ti the clicked one
+        header.classList.add("productActive")
+        
+        // get the special data type to help in display products
+        let special_class = header.getAttribute("data-type")
+        
+        // remove class show
+        products.forEach((pro)=>{
+            if (pro.classList.contains(special_class)){
+                pro.classList.add("show")
+                return
+            }
+                pro.classList.remove("show")
+        })
+    })
+})
