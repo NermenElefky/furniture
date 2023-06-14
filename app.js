@@ -123,9 +123,62 @@ slider_header.forEach((header)=>{
         products.forEach((pro)=>{
             if (pro.classList.contains(special_class)){
                 pro.classList.add("show")
+                pro.classList.remove("hide")
                 return
             }
                 pro.classList.remove("show")
+                pro.classList.add("hide")
         })
+    })
+})
+
+
+// set the height of best_seller section because it has an absolute child
+const products_displayer = document.querySelector(".products_displayer");
+const products_displayer_ele = document.querySelector(".products_displayer_container");
+
+
+// now let's set the height 
+products_displayer.style.height = products_displayer_ele.getBoundingClientRect().height + "px"; 
+window.onresize = ()=>{
+
+    products_displayer.style.height = products_displayer_ele.getBoundingClientRect().height + "px"; 
+}
+
+// now add typed js to the birth section
+
+var typed2 = new Typed('#changable-text', {
+    strings: ['<strong>Sofas</strong>', '<strong>Chairs</strong>', '<strong>Rooms</strong>','<strong>Kids Furniture</strong>' , '<Strong>Tables</strong>'],
+    typeSpeed: 10,
+    backSpeed: 2,
+    fadeOut: true,
+    loop: true
+  });
+
+
+//   new products section slider
+const products_wrapper = document.querySelector(".products-n-wrapper");
+const control_arrs = document.querySelectorAll("span.control");
+const products_child = document.querySelector(".products-new-slide");
+
+
+control_arrs.forEach((arr)=>{
+    arr.addEventListener("click",()=>{
+        
+        // get the margin right of the new product to add it when scrolling
+        let product_margin = window.getComputedStyle(products_child).marginRight
+        let product_mar_left = window.getComputedStyle(products_child).marginLeft;
+        // the number to add or subtract of the scrolling
+        let add_or_subtract = +product_margin.split("p")[0] + +product_mar_left.split("p")[0] + products_child.getBoundingClientRect().width;
+        
+        console.log(add_or_subtract)
+        // to the next
+        if (arr.closest(".right")){
+            products_wrapper.scrollLeft += add_or_subtract
+            return
+        }
+        // to the prev 
+        products_wrapper.scrollLeft -= add_or_subtract
+        
     })
 })
