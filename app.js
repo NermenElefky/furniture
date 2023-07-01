@@ -171,7 +171,7 @@ control_arrs.forEach((arr)=>{
         // the number to add or subtract of the scrolling
         let add_or_subtract = +product_margin.split("p")[0] + +product_mar_left.split("p")[0] + products_child.getBoundingClientRect().width;
         
-        console.log(add_or_subtract)
+
         // to the next
         if (arr.closest(".right")){
             products_wrapper.scrollLeft += add_or_subtract
@@ -180,5 +180,205 @@ control_arrs.forEach((arr)=>{
         // to the prev 
         products_wrapper.scrollLeft -= add_or_subtract
         
+    })
+})
+
+// make the counter on events section
+const events = document.querySelector(".events")
+let enter_section_times = false
+
+const counter = {
+    days : 12,
+    hours : 6 ,
+    minutes : 44 , 
+    seconds : 50
+}
+
+const counter_f = (ele , t)=>{
+    let s = setInterval(() => {
+        ele.innerText++
+        if (Number(ele.innerText) == t){
+            clearInterval(s)
+        }
+    }, (700 / t));
+}
+
+window.onscroll = ()=>{
+    if (window.scrollY >= (events.offsetTop - (.9*events.offsetHeight))){
+            // let's make the counter :)
+
+           if (!enter_section_times){
+            for (let [time_name , time_value] of Object.entries(counter)){
+                counter_f(document.querySelector(`.${time_name} .number span`) , time_value)
+               }
+            enter_section_times = true
+           }
+
+    }
+}
+
+// start testmonails section
+let next_prev = document.querySelectorAll(".change");
+        let testmonails = Array.from(document.querySelectorAll(".testmonail"));
+        next_prev.forEach((btn)=>{
+            btn.addEventListener("click",()=>{
+                // add to all testimonails class testmonail-hidden
+                testmonails.forEach((testi)=>{
+                        testi.classList.add("testmonail-hidden");
+                    })
+                btn.closest(".right") ?  testmonails.push(testmonails.shift()) : testmonails.unshift(testmonails.pop()); 
+                testmonails[0].classList.remove("testmonail-hidden");
+            })
+        })
+
+// make the user icon working
+const user_icon = document.querySelector(".user_account");
+const user_chooces = user_icon.querySelector("ul")
+
+
+// let's add products to card 
+const add_to_card_btns = document.querySelectorAll(".addtocart");
+const cart = document.querySelector(".boughts-info")
+const checkoutBtn = document.querySelector(".checkout")
+
+add_to_card_btns.forEach((btn)=>{
+    btn.addEventListener("click",()=>{
+        // get the image (the element which can get the src , heading and price)
+        let pro = btn.parentElement.previousElementSibling.firstElementChild
+
+        // get the image src
+        let product_image = pro.getAttribute("src")
+
+        // get the product name
+        let product_name = pro.getAttribute("data-product-name")
+
+        // get the product price
+        let product_price = pro.getAttribute("data-product-price")
+
+        let product = `
+        <div class = "cart-product show">
+        <div class = "p">
+        <img src = "${product_image}">
+        <div class = "text">
+        <p>${product_name} <br><i class="fa-solid fa-dollar-sign"></i><span class = "product-price">${product_price}</span> x <span class = "product-number">1</span> <span class = "total"><i class="fa-solid fa-dollar-sign"></i>${product_price}</span></p>
+        <div class="number">
+            <button class = "minus">
+                <i class="fa-solid fa-minus minus"></i>
+            </button>
+            <p class = "counter-number">1</p>
+            <button  class = "plus">
+                <i class="fa-solid fa-plus plus"></i>
+            </button>
+          </div>
+        </div>
+        <button class ="dlt"><i class="fa-solid fa-trash dlt"></i></button>
+        </div>
+        </div>`
+
+        // now add to cart\
+        if (cart.lastElementChild.classList.contains("empty")){
+                cart.innerHTML =`<p class = "c">Cart</p>` + product
+            }
+            else {
+                cart.innerHTML+=product
+            }
+            checkoutBtn.style.display = "block"    
+        // make a point to alert user to the new action
+            let cart_notification = document.querySelector(".user-alert")
+            cart_notification.style.display = "block";
+
+        // now scroll to top
+        window.scrollTo({top : 0 , behavior : "smooth"})
+        })
+
+
+})
+// minus function to decrease 
+document.body.addEventListener("click",(e)=>{
+    if (e.target.classList.contains("minus") || e.target.classList.contains("plus") ){
+       
+        let product_info = e.target.closest(".text")
+        let prod_price = product_info.querySelector(".product-price")
+        let prod_number = product_info.querySelector(".product-number")
+        let total = product_info.querySelector(".total")
+        let counter = product_info.querySelector(".counter-number")
+
+        // we will change this number
+        let prod_number_after_action = Number(prod_number.innerText)
+        
+        // increase or decrease the prod number
+        if (e.target.classList.contains("minus") ){
+                if (prod_number_after_action != 1){
+                    prod_number_after_action -=1
+                }
+        } 
+        else {
+            prod_number_after_action+=1
+        }
+
+        // now implement the changes 
+        prod_number.innerText = prod_number_after_action
+        counter.innerText = prod_number_after_action
+        total.innerHTML = `<i class="fa-solid fa-dollar-sign"></i>${(prod_number_after_action * prod_price.innerText).toFixed(2)}`
+    }
+    if (e.target.classList.contains("dlt")){
+            e.target.closest(".cart-product").classList.add("hide")
+            e.target.closest(".cart-product").classList.remove("show")
+           
+            let prodcuts_number_in_cart = cart.querySelectorAll(".cart-product.show").length
+            if (prodcuts_number_in_cart == 0){
+                checkoutBtn.style.display = "none"
+                cart.innerHTML = `
+                <p class = "c">Cart</p>
+                <p class = "empty">Your cart is empty</p>
+                `
+            }
+    }
+})
+
+// open the cart when clicking on the icon 
+const cart_icon = document.querySelector(".shopping")
+const cart_parent = document.querySelector(".user_boughts")
+
+
+// make header icons working
+document.body.addEventListener("click",(e)=>{
+    // make shopping icon work
+    if (cart_parent.style.display == "none" && e.target.classList.contains("shopping-icon")){
+            cart_parent.style.display = "block"
+            document.querySelector(".user-alert").style.display = "none"
+    }
+    else if(cart_parent.style.display == "block")  {
+            if (e.target.classList.contains("shopping-icon") || !e.target.closest(".shopping")){
+                cart_parent.style.display = "none"
+            }
+    }
+    // make user account icon working 
+    if (e.target.classList.contains("user-account-icon") && user_chooces.style.display == "none" ){
+        user_chooces.style.display = "block"      
+    }
+    else if (user_chooces.style.display == "block"){
+        if (e.target.classList.contains("user-account-icon") || !e.target.closest(".user_account")){
+            user_chooces.style.display = "none"
+        }
+    }
+    // make the hamburger icon work 
+    if (e.target.classList.contains("ham") && action_menu.style.display == "none"){
+        action_menu.style.display = "block"
+    }
+    else if (action_menu.style.display == "block"){
+        if (e.target.classList.contains("ham") || !e.target.closest(".hamburger") ){
+            action_menu.style.display = "none"
+        }
+    }
+})
+
+// hamburger icon menu
+const hamburger = document.querySelector(".hamburger")
+const action_menu = document.querySelector(".nested-links")
+
+hamburger.addEventListener("click",()=>{
+    hamburger.querySelectorAll("span").forEach((span)=>{
+        span.classList.toggle("hoverd")
     })
 })
