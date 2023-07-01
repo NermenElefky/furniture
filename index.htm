@@ -23,7 +23,7 @@
     <header>
         <div class="container">
             <div class="logo">
-                <a href="index.html"><i class="fa-solid fa-franc-sign"></i>urniture</a>
+                <a href="./index.htm"><i class="fa-solid fa-franc-sign"></i>urniture</a>
             </div>
             <div class="nav-icons">
                 <span class="search">
@@ -31,12 +31,44 @@
                     <input type="text" style="width:0">
                     <span class="for-effect" style="width : 100%"></span>
                 </span>
-                <span><i class="fa-solid fa-cart-shopping"></i></span>
-                <span><i class="fa-solid fa-circle-user"></i></span>
-                <span class="hamburger">
-                    <span class="shortest"></span>
-                    <span class="longest"></span>
-                    <span class="medium"></span>
+                <span class="shopping"><i class="fa-solid fa-cart-shopping shopping-icon"></i>
+                    <div class="user_boughts" style="display: none;">
+                        <div class="boughts-info">
+                            <p class = "c">Cart</p>
+                            <p class = "empty">Your cart is empty</p>
+                        </div>
+                            <button class="checkout" style="display: none;">Checkout</button>
+                    </div>
+                    <span class="user-alert" style="display: none;"></span>
+                </span>
+                <span class="user_account"><i class="fa-solid fa-circle-user user-account-icon"></i>
+                    <ul class="login" style="display: none;">
+                        <li><a href="#">Sign up</a></li>
+                        <li><a href="#">Login in</a></li>
+                    </ul>
+                </span>
+                <span class="hamburger ham">
+                    <span class="shortest ham"></span>
+                    <span class="longest ham"></span>
+                    <span class="medium ham"></span>
+                    <div class="nested-links" style="display: none;">
+                        <div class="list">
+                            <ul>
+                                <li><a href="#">Request a discount</a></li>
+                                <li><a href="#">Events</a></li>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="#">WishList</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#">All categories</a></li>
+                                <li><a href="#">New products</a></li>
+                                <li><a href="#">Kids furniture</a></li>
+                                <li><a href="#">Best seller</a></li>
+                                <li><a href="#">New Chairs</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </span>
             </div>
         </div>
@@ -61,7 +93,7 @@
                                 <span><i class="fa-solid fa-dollar-sign"></i> 240.00</span>
                             </div>
                         </div>
-                        <button class="goahead"><i class="fa-solid fa-arrow-right-long"></i></button>
+                        <button class="goahead" onclick="window.location.href = 'notCreated.html'"><i class="fa-solid fa-arrow-right-long"></i></button>
                         
                     </div>
                 </div>
@@ -71,7 +103,7 @@
                 <div class="text">
                     <h1>Furniture that tells a stroy</h1>
                     <p>Choose your furniture as your style and build your story.</p>
-                    <button class="explore">Explore</button>
+                    <button class="explore" onclick="window.location.href ='notCreated.html'">Explore</button>
                 </div>
                 <div class="image">
                     <img src="./images/furn-img (1).png" alt="furniture image" class="second-slider-main-image">
@@ -88,7 +120,7 @@
                 <div class="text">
                     <h1>Sit like Kings and Queens</h1>
                     <p>Pick your furniture from a new and large collections of modern furniture. <br> Give your home modern look and be the king</p>
-                    <button>Get a look </button>
+                    <button onclick="window.location.href = 'notCreated.html'">Get a look </button>
                 </div>
                 <div class="image">
                     <img src="./images/furn-img (3).png" alt="">
@@ -178,7 +210,7 @@
                 <div class="products_displayer_container">
                     <div class="best-one chair show" style="--my-color: #8fbc8f99;">
                         <div class="image-container">
-                            <img src="./images/best seller2.png" alt="armchair">
+                            <img src="./images/best seller2.png" alt="armchair" data-product-name="Haimes" data-product-price="390.00">
                         </div>
                         <div class="product-info">
                             <p class="price"><i class="fa-solid fa-dollar-sign"></i>390.00</p>
@@ -201,7 +233,7 @@
                     </div>
                     <div class="best-one chair show" style="--my-color: #fff59d;">
                         <div class="image-container">
-                            <img src="./images/best seller3 (1).png" alt="armchair">
+                            <img src="./images/best seller3 (1).png" alt="armchair" data-product-name="Odn Chair" data-product-price = "672.00">
                         </div>
                         <div class="product-info">
                             <p class="price"><i class="fa-solid fa-dollar-sign"></i>672.00</p>
@@ -224,7 +256,7 @@
                     </div>
                     <div class="best-one chair show" style="--my-color:#1e90ff33;">
                         <div class="image-container">
-                            <img src="./images/best seller3 (2).png" alt="armchair">
+                            <img src="./images/best seller3 (2).png" alt="armchair" data-product-name="Vedbo Chair" data-product-price="563.99">
                         </div>
                         <div class="product-info">
                             <p class="price"><i class="fa-solid fa-dollar-sign"></i>563.99</p>
@@ -250,7 +282,7 @@
                 <div class="products_displayer_container">
                     <div class="best-one sofa hide" style="--my-color : #672a7e33;">
                         <div class="image-container">
-                            <img src="./images/sofa best (3).png" alt="armchair">
+                            <img src="./images/sofa best (3).png" alt="armchair" data-product-name="Medi Sofa" data-product-price="320.45">
                         </div>
                         <div class="product-info">
                             <p class="price"><i class="fa-solid fa-dollar-sign"></i>320.45</p>
@@ -273,7 +305,7 @@
                     </div>
                     <div class="best-one sofa hide" style="--my-color:#a1998e38;">
                         <div class="image-container">
-                            <img  src ="./images/sofa best (2).png" alt="armchair">
+                            <img  src ="./images/sofa best (2).png" alt="armchair" data-product-name="White Sofa" data-product-price="672.89">
                         </div>
                         <div class="product-info">
                             <p class="price"><i class="fa-solid fa-dollar-sign"></i>672.89</p>
@@ -296,7 +328,7 @@
                     </div>
                     <div class="best-one sofa hide" style="--my-color:#3e527b3b;">
                         <div class="image-container">
-                            <img src="./images/sofa best (1).png" alt="armchair">
+                            <img src="./images/sofa best (1).png" alt="armchair" data-product-name="Blue Sofa" data-product-price="863.99">
                         </div>
                             <div class="product-info">
                             <p class="price"><i class="fa-solid fa-dollar-sign"></i>863.99</p>
@@ -322,7 +354,7 @@
                 <div class="products_displayer_container">
                     <div class="best-one kid hide" style="--my-color : #f3bbc059;">
                         <div class="image-container">
-                            <img src="./images/kid best (1).png" alt="armchair">
+                            <img src="./images/kid best (1).png" alt="armchair" data-product-name="Kid Chair" data-product-price="423.55">
                         </div>
                         <div class="product-info">
                             <p class="price"><i class="fa-solid fa-dollar-sign"></i>423.55</p>
@@ -345,7 +377,7 @@
                     </div>
                     <div class="best-one kid hide" style="--my-color:#8bd5d83d;">
                         <div class="image-container">
-                            <img  src ="./images/kid best (2).png" alt="armchair">
+                            <img  src ="./images/kid best (2).png" alt="armchair" data-product-name="Shark Chair" data-product-price="472.99">
                         </div>
                         <div class="product-info">
                             <p class="price"><i class="fa-solid fa-dollar-sign"></i>472.99</p>
@@ -368,7 +400,7 @@
                     </div>
                     <div class="best-one kid hide" style="--my-color:rgb(176 44 30 / 31%)">
                         <div class="image-container">
-                            <img src="./images/kid best (3).png" alt="armchair">
+                            <img src="./images/kid best (3).png" alt="armchair" data-product-name="Mum Kid Chair" data-product-price="563.90">
                         </div>
                             <div class="product-info">
                             <p class="price"><i class="fa-solid fa-dollar-sign"></i>563.90</p>
@@ -400,7 +432,7 @@
             <div class="birth-text">
                 <h2>save your money with exclusive <br> discounts in  <span id="changable-text"></span>.</h2>
                 <p>Enjoy the discounts on all furniture categories on the tenth birthday of furniture.</p>
-                <button><span>Shop now</span></button>
+                <button onclick="window.location.href='notCreated.html'"><span>Shop now</span></button>
             </div>  
             <div class="right-draws">
                 <span class="material-icons-outlined yellow">
@@ -444,7 +476,7 @@
                     </a>
                     <div class="product-image-price">
                            <a class="product-image" href="notCreated.html">
-                                <img src="./images/best sller1.png" alt="chair image">
+                                <img src="./images/best sller1.png" alt="chair image" data-product-name ="Modern Chair" data-product-price="210">
                            </a>
                            <div class="more">
                                 <span class="love">
@@ -465,7 +497,7 @@
                     </a>
                     <div class="product-image-price">
                            <a class="product-image" href="notCreated.html">
-                                <img src="./images/furniture_img (13).png" alt="chair image">
+                                <img src="./images/furniture_img (13).png" alt="chair image" data-product-name="Ford Chair" data-product-price="306">
                            </a>
                            <div class="more">
                                 <span class="love">
@@ -486,7 +518,7 @@
                     </a>
                     <div class="product-image-price">
                            <a class="product-image" href="notCreated.html">
-                                <img src="./images/furn6.png" alt="chair image">
+                                <img src="./images/furn6.png" alt="chair image" data-product-name="Modern Sofa" data-product-price="267">
                            </a>
                            <div class="more">
                                 <span class="love">
@@ -507,7 +539,7 @@
                     </a>
                     <div class="product-image-price">
                            <a class="product-image" href="notCreated.html">
-                                <img src="./images/furniture_img (4).png" alt="chair image">
+                                <img src="./images/furniture_img (4).png" alt="chair image" data-product-name="Rose Chair" data-product-price="477">
                            </a>
                            <div class="more">
                                 <span class="love">
@@ -528,7 +560,7 @@
                     </a>
                     <div class="product-image-price">
                            <a class="product-image" href="notCreated.html">
-                                <img src="./images/furniture_img (9).png" alt="chair image">
+                                <img src="./images/furniture_img (9).png" alt="chair image" data-product-name="Sadd Chair" data-product-price="267">
                            </a>
                            <div class="more">
                                 <span class="love">
@@ -549,7 +581,7 @@
                     </a>
                     <div class="product-image-price">
                            <a class="product-image" href="notCreated.html">
-                                <img src="./images/furn-img (8).png" alt="chair image">
+                                <img src="./images/furn-img (8).png" alt="chair image" data-product-name="Youw Chair" data-product-price="267">
                            </a>
                            <div class="more">
                                 <span class="love">
@@ -570,7 +602,7 @@
                     </a>
                     <div class="product-image-price">
                            <a class="product-image" href="notCreated.html">
-                                <img src="./images/furniture_img (11).png" alt="chair image">
+                                <img src="./images/furniture_img (11).png" alt="chair image" data-product-name="Mode Chair" data-product-price="177">
                            </a>
                            <div class="more">
                                 <span class="love">
@@ -591,7 +623,7 @@
                     </a>
                     <div class="product-image-price">
                            <a class="product-image" href="notCreated.html">
-                                <img src="./images/furn-img (4).png" alt="chair image">
+                                <img src="./images/furn-img (4).png" alt="chair image" data-product-name="Togo Chair" data-product-price="377">
                            </a>
                            <div class="more">
                                 <span class="love">
@@ -612,7 +644,7 @@
                     </a>
                     <div class="product-image-price">
                            <a class="product-image" href="notCreated.html">
-                                <img src="./images/furniture_img (3).png" alt="chair image">
+                                <img src="./images/furniture_img (3).png" alt="chair image" data-product-name="Modern Chair" data-product-price="208">
                            </a>
                            <div class="more">
                                 <span class="love">
@@ -633,7 +665,7 @@
                     </a>
                     <div class="product-image-price">
                            <a class="product-image" href="notCreated.html">
-                                <img src="./images/furn-img (10).png" alt="chair image">
+                                <img src="./images/furn-img (10).png" alt="chair image" data-product-name="Modern Sofa" data-product-price="381">
                            </a>
                            <div class="more">
                                 <span class="love">
@@ -654,7 +686,7 @@
                     </a>
                     <div class="product-image-price">
                            <a class="product-image" href="notCreated.html">
-                                <img src="./images/furniture_img (5).png" alt="chair image">
+                                <img src="./images/furniture_img (5).png" alt="chair image" data-product-name="Modern Chair" data-product-price="300">
                            </a>
                            <div class="more">
                                 <span class="love">
@@ -678,6 +710,166 @@
                 <span class="left control"><i class="fa-solid fa-chevron-left"></i></span>
         </div>
    </div>
+
+   <!-- latest events -->
+   <div class="events">
+        <h2>Don't miss the upcoming event</h2>
+        <div class="time">
+            <div class="days">
+                <span class="number"><span>0</span></span>
+                <span class="indentifier">days</span>
+            </div>
+            <div class="hours">
+                <span class="number"><span>0</span></span>
+                <span class="indentifier">hours</span>
+            </div>
+            <div class="minutes">
+                <span class="number"><span>0</span></span>
+                <span class="indentifier">minutes</span>
+            </div>
+            <div class="seconds">
+                <span class="number"><span>0</span></span>
+                <span class="indentifier">Seconds</span>
+            </div>
+        </div>
+        <form action="" class="enroll">
+            <input type="email" placeholder="enter your email">
+            <button>Subscribe</button>
+        </form>
+   </div>
+
+
+   <!-- testmonails section -->
+   <div class="testmonails-section">
+    <h2>Our clients saying</h2>
+    <div class="test-container">
+        <div class="arrows">
+            <i class="fa-solid fa-caret-right right change"></i>
+            <i class="fa-solid fa-caret-left left change"></i>
+        </div>
+    
+        <div class="testmonail">
+            <div class="content">
+                <div class="text">
+                    <div class="quote-icon">
+                        <i class="fa-sharp fa-solid fa-quote-left"></i>
+                    </div>
+                    <div class="feedback">
+                        <div class="rate">
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                        </div>
+                        <div class="person-feed">
+                            <h1>sama mohamed</h1>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque sed nihil molestias itaque quasi velit voluptate ullam iste! Expedita vitae iste ut nobis ipsum!</p>
+                            <span class="line"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="person-img">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXP-kMHPU3z8-pQAAHzJAlzbSx8ZpCmJXSY97ksUuJ_YDvz38tsiszl1GnPUFkgvddwSk&usqp=CAU" alt="">
+                </div>
+            </div>
+        </div>
+    
+        <!-- second testmonail -->
+        <div class="testmonail testmonail-hidden">
+            <div class="content">
+                <div class="text">
+                    <div class="quote-icon">
+                        <i class="fa-sharp fa-solid fa-quote-left"></i>
+                    </div>
+                    <div class="feedback">
+                        <div class="rate">
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star"></i></span>
+                            <span><i class="fa-solid fa-star-half-stroke"></i></span>
+                        </div>
+                        <div class="person-feed">
+                            <h1>rana ibrahim</h1>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque sed nihil molestias itaque quasi velit voluptate ullam iste! Expedita vitae iste ut nobis ipsum!</p>
+                            <span class="line"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="person-img">
+                    <img src="data:image/jpeg;base64,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" alt="">
+                </div>
+            </div>
+        </div>
+            <!-- third testmonail -->
+            <div class="testmonail testmonail-hidden">
+                <div class="content">
+                    <div class="text">
+                        <div class="quote-icon">
+                            <i class="fa-sharp fa-solid fa-quote-left"></i>
+                        </div>
+                        <div class="feedback">
+                            <div class="rate">
+                                <span><i class="fa-solid fa-star"></i></span>
+                                <span><i class="fa-solid fa-star"></i></span>
+                                <span><i class="fa-solid fa-star"></i></span>
+                                <span><i class="fa-solid fa-star"></i></span>
+                                <span><i class="fa-solid fa-star"></i></span>
+                            </div>
+                            <div class="person-feed">
+                                <h1>salma mostafa</h1>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque sed nihil molestias itaque quasi velit voluptate ullam iste! Expedita vitae iste ut nobis ipsum!</p>
+                                <span class="line"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="person-img">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFcVDw8vDzQ_eUZO1wC43pYO506a27gtx9cA&usqp=CAU" alt="">
+                    </div>
+                </div>
+            </div>  
+    </div>
+   </div>
+
+   <!-- start footer -->
+   <footer>
+    <div class="container">
+        <div class="info">
+            <a class="footer-logo" href="index.html"><i class="fa-solid fa-franc-sign"></i>urniture</a>
+            <div class="icons">
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+            <p>Choose your furniture from us and have a happy life. Sit in luxury.</p>
+        </div>
+        <div class="links">
+            <ul>
+                <li><a href="notCreated.html">New products</a></li>
+                <li><a href="notCreated.html">Modern furniture</a></li>
+                <li><a href="notCreated.html">Discounts</a></li>
+                <li><a href="notCreated.html">Furniture Blogs</a></li>
+                <li><a href="notCreated.html">help center</a></li>
+            </ul>
+        </div>
+        <div class = "add">
+            <span>Egypt, Cairo , Elsadat street</span>
+            <span>Business Hours: From 07:00 To 24:00</span>
+            <span>
+                +20125926789<br>
+                +20193465432</span>
+            </div>
+        <div class="images">
+           <div> <img src="./images/furniture_img (10).png" alt=""></div>
+            <div><img src="./images/kid best (1).png" alt=""></div>
+            <div><img src="./images/furniture_img (3).png" alt=""></div>
+            <div><img src="./images/furn-img (2).png" alt=""></div>
+            <div><img src="./images/furniture_img (11).png" alt=""></div>
+            <div><img src="./images/furniture_img (13).png" alt=""></div>
+        </div>
+    </div>
+    </footer>
     <!-- js file -->
 
    
